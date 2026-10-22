@@ -328,7 +328,7 @@ export function portCountry(code?: string) {
 }
 
 export function lineTotal(item: BillItemForm) {
-  if (item.lineTotal != null && String(item.lineTotal).trim() !== '') return Number(item.lineTotal)
+  if (item.lineTotal != null && item.lineTotal.trim() !== '') return Number(item.lineTotal)
   return Number(item.quantity) * Number(item.unitPrice)
 }
 
@@ -408,7 +408,7 @@ export function toShippingBillPayload(values: ShippingBillFormValues) {
       contract_number: invoice.contractNumber,
       nature_of_payment: invoice.natureOfPayment,
       period_of_payment: optionalNumber(invoice.periodOfPayment),
-      invoice_total: invoice.invoiceTotal != null && String(invoice.invoiceTotal).trim() !== '' ? Number(invoice.invoiceTotal) : invoiceTotal(invoice),
+      invoice_total: invoice.invoiceTotal != null && invoice.invoiceTotal.trim() !== '' ? Number(invoice.invoiceTotal) : invoiceTotal(invoice),
       items: invoice.items.map((item, itemIndex) => ({
         item_serial_number: itemIndex + 1,
         ritc_code: item.ritcCode,

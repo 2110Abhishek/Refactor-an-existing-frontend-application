@@ -4,6 +4,7 @@ words:
   - drawback
   - RITC
   - ITEMACCESS
+  - nadu
 ignoreWords:
   - otpauth
   - overscan
@@ -61,3 +62,52 @@ ignoreWords:
   - insaurance
   - commissionerate
   - packging
+  - sublabel
+  - BTSL
+  - ESEAL
+  - RFID
+  - ROSCTL
+  - NCPTI
+  - HREC
+  - TREC
+  - SANCHIT
+  - MSKU
+  - Authorisation
+  - Tirupur
+  - AAACG
+  - GIDC
+  - Khatodara
+  - Ahmedabad
+  - Narol
+  - Willingdon
+  - Guntur
+  - Andhra
+  - Pradesh
+  - Chinchwad
+  - MIDC
+  - Guindy
+  - Bengaluru
+  - Mysuru
+  - Hebbal
+  - Karnataka
+  - Sitapura
+  - Boranada
+  - Dhabi
+  - KIZAD
+  - Speicherstadt
+  - Flughafen
+  - Mansoor
+  - JAFZA
+  - Sharjah
+  - SAIF
+  - Jurong
+  - Changi
+  - Trafford
+  - AADCZ
+  - AAEET
+  - AAEOE
+  - AARPR
+  - ATPL
+  - AGFPL
+  - ZSAC
+  - AGRI

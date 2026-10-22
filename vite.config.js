@@ -4,10 +4,14 @@ import { defineConfig } from 'vite'
 
 /* eslint-disable no-undef */
 
-export const isProduction = process.env.NODE_ENV === 'production'
+export const isProduction = process.env.NODE_ENV === 'production' || process.argv.includes('build')
 
-// Set entry point for index.html, from arguments passed
-process.env.PUBLIC_ENTRY_POINT = process.argv[process.argv.length - 1]
+// Set entry point for index.html, from arguments passed or default
+const lastArg = process.argv[process.argv.length - 1]
+const detectedEntry = lastArg && (lastArg.endsWith('.tsx') || lastArg.endsWith('.ts') || lastArg.endsWith('.jsx') || lastArg.endsWith('.js'))
+  ? lastArg
+  : 'src/index.tsx'
+process.env.PUBLIC_ENTRY_POINT = '/' + detectedEntry.replace(/^\.?\//, '')
 
 const packageAlias = [
   { find: '@', replacement: fileURLToPath(new URL(`src/`, import.meta.url)) },
@@ -20,7 +24,8 @@ const port = parseInt(process.argv[process.argv.length - 2])
 
 /** @type {import('vite').UserConfig} */
 const config = {
-  server: { port: port, strictPort: true },
+  root: fileURLToPath(new URL('.', import.meta.url)),
+  server: { host: true, port: port || 5173, strictPort: true },
   plugins: [react()],
   envPrefix: ['VITE_', 'PUBLIC_'],
   resolve: {
@@ -34,6 +39,7 @@ if (isProduction) {
   config.build = {
     sourcemap: true,
     rollupOptions: {
+      input: fileURLToPath(new URL('index.html', import.meta.url)),
       output: {
         manualChunks(id) {
           // Check if the import is from not from node_modules, i.e our source code
